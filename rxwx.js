@@ -1,1 +1,58 @@
-"use strict";var Rx=_interopRequireWildcard(require("./rx"));function _interopRequireWildcard(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var o in e)if(Object.prototype.hasOwnProperty.call(e,o)){var r=Object.defineProperty&&Object.getOwnPropertyDescriptor?Object.getOwnPropertyDescriptor(e,o):{};r.get||r.set?Object.defineProperty(t,o,r):t[o]=e[o]}return t.default=e,t}function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}var ob={Rx:{},fromEvent:function(e,t){var o=new Rx.Subject;return e[t]=function(e){o.next(e)},o}};for(var p in Rx)ob.Rx[p]=Rx[p];var cbObj2Obs=function(n,c,e){return Rx.Observable.create(function(t){if("object"===_typeof(n)||void 0===n){var o=Object.assign({},n),e=new Promise(function(e,t){o.success=function(){e.apply(void 0,arguments)},o.fail=function(e){return t(e)}}),r=c.call(null,o)||{};e.then(function(e){t.next(Object.assign(r,e)),t.complete()},function(e){t.error(e,r),t.complete()})}else t.next(c.call(null,n))})},_loop=function(n){switch(_typeof(wx[n])){case"object":ob[n]=Object.assign(wx[n]);break;case"function":/Sync$/.test(n)?ob[n]=function(){for(var e,t=arguments.length,o=new Array(t),r=0;r<t;r++)o[r]=arguments[r];return Rx.Observable.of((e=wx[n]).call.apply(e,[null].concat(o)))}:ob[n]=function(e){return cbObj2Obs(e,wx[n])};break;default:ob[n]=wx[n]}};for(var _p in wx)_loop(_p);module.exports=ob;
+import * as Rx from './rx'
+
+let ob = {
+  Rx: {},
+  fromEvent(data, eventName) {
+    var subject = new Rx.Subject()
+    data[eventName] = function(event) {
+      subject.next(event)
+    }
+    return subject
+  }
+}
+
+for (let p in Rx) {
+  ob.Rx[p] = Rx[p]
+}
+
+const cbObj2Obs = (obj, fn, returnMethod) => Rx.Observable.create(observe => {
+  if (typeof obj === 'object' || typeof obj === 'undefined') {
+    let param = Object.assign({}, obj)
+    let pro = new Promise((resolve, reject) => {
+      param.success = (...arg) => {
+        resolve(...arg)
+      }
+      param.fail = (e) => reject(e)
+    })
+    let instance = fn.call(null, param) || {}
+    pro.then(res => {
+      observe.next(Object.assign(instance, res))
+      observe.complete()
+    }, e => {
+      observe.error(e, instance)
+      observe.complete()
+    })
+  } else {
+    observe.next(fn.call(null, obj))
+  }
+})
+
+for (let p in wx) {
+  switch (typeof wx[p]) {
+    case 'object':
+      ob[p] = Object.assign(wx[p])
+      break;
+    case 'function':
+      if (/Sync$/.test(p)) {
+        ob[p] = (...arg) => Rx.Observable.of(wx[p].call(null, ...arg))
+      } else {
+        ob[p] = (obj) => cbObj2Obs(obj, wx[p])
+      }
+      break;
+    default:
+      ob[p] = wx[p]
+      break;
+  }
+}
+
+module.exports = ob
