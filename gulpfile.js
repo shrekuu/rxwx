@@ -1,18 +1,20 @@
-'use strict'
-let gulp = require('gulp')
-let uglify = require("gulp-uglify")
-let rename = require('gulp-rename')
-let concat = require('gulp-concat')
-let babel = require('gulp-babel')
+const gulp = require('gulp')
+const babel = require('gulp-babel')
+const uglify = require('gulp-uglify')
+const pump = require('pump')
 
-gulp.task('build', () => {
-  gulp.src('./src/*.js')
-    .pipe(babel({
-      presets: ['env']
-    }))
-    .pipe(uglify())
-    // .pipe(concat('RxWX.js'))
-    .pipe(gulp.dest('./'))
-})
+gulp.task('build', err =>
+  pump(
+    gulp.src('src/*.js'),
+    babel({
+      presets: ['@babel/env']
+    }),
+    uglify(),
+    gulp.dest('./'),
+    () => {
+      console.log('pipe finished', err);
+    }
+  )
+);
 
-gulp.task('default', ['build'])
+gulp.task('default', ['build']);

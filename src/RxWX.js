@@ -1,4 +1,4 @@
-import * as Rx from './Rx'
+import * as Rx from './rx'
 
 let ob = {
   Rx: {},
