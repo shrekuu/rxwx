@@ -34,7 +34,7 @@ import rxwx from 'rxjs6-wx'
 
 rxwx.removeStorageSync('xx').pipe(
   operators.catchError(e => console.error('rxwx发现错误'))
-  // 或独立引入 operators: import { operators } from '../rxwx/rx'
+  // 或独立引入 operators: import { operators } from '../rxjs6-wx/rx'
   // rxwx.Rx.operators.catchError(e => console.error('rxwx发现错误'))
   ).subscribe(
     resp => console.log(resp)
