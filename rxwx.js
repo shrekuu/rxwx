@@ -1,4 +1,4 @@
-import * as Rx from './rx'
+const Rx = require('./rx')
 
 let ob = {
   Rx: {},

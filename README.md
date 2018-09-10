@@ -17,6 +17,10 @@ RxWX 模块的`Rx`属性为 RxJS 对象，支持 RxJS 对象所有属性，例�
 
 `import rxwx from 'rxjs6-wx'`
 
+也可将 `operators` 从 `rxjs` 单独引入 `import { operators } from 'rxjs6-wx/rx'`, 不单独引入的话就这样 `rxwx.Rx.operators.map(...)` 用.
+
+不要直接 `npm install rxjs`, 那样小程序就太大了
+
 ## 同步函数
 
 ```js
