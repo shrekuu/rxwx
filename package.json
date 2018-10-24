@@ -1,6 +1,6 @@
 {
   "name": "rxjs6-wx",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Based on Rx.js for Weixin miniprogram",
   "main": "rxwx.js",
   "dependencies": {},

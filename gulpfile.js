@@ -14,9 +14,6 @@ gulp.task('default', err =>
     rename({
       suffix: '.min'
     }),
-    gulp.dest('./'),
-    () => {
-      console.log('pipe finished', err)
-    }
+    gulp.dest('./')
   )
 )

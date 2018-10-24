@@ -1,6 +1,6 @@
 # rxwx
 
-_克隆自仓库 https://github.com/yalishizhude/RxWX 然后升级 rxjs 到 6.3.2 umd 版本. 升级了一下打包工具, 更新了一下 readme.md 里这些示例. 重新发包到 npmjs.org_
+_克隆自仓库 https://github.com/yalishizhude/RxWX 然后升级 rxjs 到 6.3.3 umd 版本. 升级了一下打包工具, 更新了一下 readme.md 里这些示例. 重新发包到 npmjs.org_
 
 封装了[RxJS](http://cn.rx.js.org/manual/overview.html)对象[微信小程序 API](https://mp.weixin.qq.com/debug/wxadoc/dev/api/)，让你写出更优雅更简介的代码。
 
