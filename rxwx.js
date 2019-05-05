@@ -1,4 +1,4 @@
-const Rx = require('./rx')
+const Rx = require('./rxjs')
 
 let ob = {
   Rx: {},
