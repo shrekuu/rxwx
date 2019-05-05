@@ -1,6 +1,6 @@
 # rxwx
 
-_克隆自仓库 https://github.com/yalishizhude/RxWX 然后升级 rxjs 到 6.3.3 umd 版本. 升级了一下打包工具, 更新了一下 readme.md 里这些示例. 重新发包到 npmjs.org_
+_克隆自仓库 https://github.com/yalishizhude/RxWX 然后升级 rxjs 到 6.5.1 umd 版本. 升级了一下打包工具, 更新了一下 readme.md 里这些示例. 重新发包到 npmjs.org
 
 封装了[RxJS](http://cn.rx.js.org/manual/overview.html)对象[微信小程序 API](https://mp.weixin.qq.com/debug/wxadoc/dev/api/)，让你写出更优雅更简介的代码。
 
@@ -119,7 +119,7 @@ Promise.all([getUser, getSystem])
 // 调用RxWX中的Rx对象，包含RxJS所有操作符和函数
 // 使用zip操作符
 Rx.Observable.zip(
-    rxwx.getUserInfo(), 
+    rxwx.getUserInfo(),
     rxwx.getSystemInfo()
   ).pipe(
     operators.catchError(e => console.log(e))
