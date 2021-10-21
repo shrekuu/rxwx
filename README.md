@@ -1,5 +1,9 @@
 # rxwx
 
+# 不推荐这样写啦（2021）
+
+建议直接按官网方式使用 Rxjs，新版本语法都不一样啦，如用管道(Pipe)把操作符包起来的写法。
+
 > **如果你电脑编译挺快并且也不想让最终包包含整个 rxjs 的话, 推荐直接 npm 安装最新的 rxjs, 自己将一些 api 封装为 Observable 使用.**
 
 _克隆自仓库 https://github.com/yalishizhude/RxWX 然后升级 rxjs 到 6.5.3 umd 版本. 升级了一下打包工具, 更新了一下 readme.md 里这些示例. 重新发包到 npmjs.org
