@@ -6,6 +6,8 @@
 
 > **如果你电脑编译挺快并且也不想让最终包包含整个 rxjs 的话, 推荐直接 npm 安装最新的 rxjs, 自己将一些 api 封装为 Observable 使用.**
 
+---
+
 _克隆自仓库 https://github.com/yalishizhude/RxWX 然后升级 rxjs 到 6.5.3 umd 版本. 升级了一下打包工具, 更新了一下 readme.md 里这些示例. 重新发包到 npmjs.org
 
 封装了[RxJS](http://cn.rx.js.org/manual/overview.html)对象[微信小程序 API](https://mp.weixin.qq.com/debug/wxadoc/dev/api/)，让你写出更优雅更简介的代码。
